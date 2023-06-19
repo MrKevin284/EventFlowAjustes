@@ -1,0 +1,391 @@
+Versão1 voltar caso necessário: /*CREATE DATABASE EventFlow;
+
+USE EventFlow;
+
+CREATE TABLE tipo_usuario (
+  id_funcao INTEGER,
+  descricao VARCHAR(100),
+  PRIMARY KEY (id_funcao)
+);
+
+CREATE TABLE usuario (
+  idusuario INT AUTO_INCREMENT NOT NULL PRIMARY KEY,
+  nome VARCHAR(300) NOT NULL,
+  cpf_cnpj VARCHAR(18),
+  tipo_user INTEGER NOT NULL,
+  telefone VARCHAR(20) NOT NULL,
+  empresa VARCHAR(300) DEFAULT NULL,
+  FOREIGN KEY (tipo_user) REFERENCES tipo_usuario (id_funcao)
+);
+
+CREATE TABLE login (
+  idlogin INT AUTO_INCREMENT NOT NULL PRIMARY KEY,
+  email VARCHAR(300) NOT NULL,
+  senha VARCHAR(150) NOT NULL,
+  idusuario INT NOT NULL,
+  FOREIGN KEY (idusuario) REFERENCES usuario (idusuario)
+);
+
+CREATE TABLE eventos (
+  idevento INT AUTO_INCREMENT NOT NULL PRIMARY KEY,
+  nome_evento VARCHAR(250) NOT NULL,
+  endereco VARCHAR(200) NOT NULL,
+  palavra_chave VARCHAR(50),
+  descricao VARCHAR(500) NOT NULL,
+  data_inicio_evento DATE NOT NULL,
+  data_final_evento DATE NOT NULL,
+  horario_inicial TIME,
+  horario_final TIME,
+  idusuario INT NOT NULL,
+  FOREIGN KEY (idusuario) REFERENCES usuario (idusuario)
+);
+
+CREATE TABLE tipo_ingresso (
+  id_tipoingresso INT NOT NULL PRIMARY KEY,
+  descricao VARCHAR(100)
+);
+
+CREATE TABLE ingresso (
+  id_ingresso INT AUTO_INCREMENT NOT NULL PRIMARY KEY,
+  quantidade INT NOT NULL,
+  valor DECIMAL(10,2),
+  id_tipoingresso INT NOT NULL,
+  idevento INT NOT NULL,
+  FOREIGN KEY (id_tipoingresso) REFERENCES tipo_ingresso (id_tipoingresso),
+  FOREIGN KEY (idevento) REFERENCES eventos (idevento)
+);
+
+CREATE TABLE carrinho (
+  idcarrinho INT AUTO_INCREMENT NOT NULL PRIMARY KEY,
+  idusuario INT NOT NULL,
+  FOREIGN KEY (idusuario) REFERENCES usuario (idusuario)
+);
+
+CREATE TABLE carrinho_ingresso (
+  idcarrinho INT NOT NULL,
+  id_ingresso INT NOT NULL,
+  quantidade INT NOT NULL,
+  PRIMARY KEY (idcarrinho, id_ingresso),
+  FOREIGN KEY (idcarrinho) REFERENCES carrinho (idcarrinho),
+  FOREIGN KEY (id_ingresso) REFERENCES ingresso (id_ingresso)
+);
+
+CREATE TABLE venda (
+  id_venda INT AUTO_INCREMENT NOT NULL PRIMARY KEY,
+  nome_item VARCHAR(200) NOT NULL,
+  quantidade INT NOT NULL,
+  preco_unitario DECIMAL(10,2)
+);
+
+CREATE TABLE iten_loja (
+  iditem_loja INT AUTO_INCREMENT NOT NULL PRIMARY KEY,
+  nome VARCHAR(250) NOT NULL,
+  descricao VARCHAR(300) NOT NULL,
+  quantidade INT NOT NULL,
+  valor DECIMAL(10,2) NOT NULL,
+  idevento INT NOT NULL,
+  FOREIGN KEY (idevento) REFERENCES eventos (idevento)
+);
+
+INSERT INTO tipo_usuario (id_funcao, descricao) VALUES (1, 'cadastro Pessoal');
+INSERT INTO tipo_usuario (id_funcao, descricao) VALUES (2, 'cadastro Empresarial');
+
+INSERT INTO tipo_ingresso (id_tipoingresso, descricao) VALUES (1, 'entrada inteira');
+INSERT INTO tipo_ingresso (id_tipoingresso, descricao) VALUES (2, 'entrada estudante');
+
+drop database eventflow; */
+
+
+Versão 2: 
+
+drop database EventFlow;
+create database EventFlow;
+use EventFlow;
+
+CREATE TABLE tipo_usuario (
+id_funcao INTEGER,
+descricao VARCHAR(100),
+PRIMARY KEY (id_funcao)
+);
+
+CREATE TABLE usuario (
+idusuario INT AUTO_INCREMENT NOT NULL PRIMARY KEY,
+nome VARCHAR(300) NOT NULL,
+cpf_cnpj VARCHAR(18),
+tipo_user INTEGER NOT NULL,
+telefone VARCHAR(20) NOT NULL,
+empresa VARCHAR(300) DEFAULT NULL,
+idcarrinho INT
+);
+
+CREATE TABLE carrinho (
+idcarrinho INT AUTO_INCREMENT NOT NULL PRIMARY KEY,
+iditem_loja INT,
+id_ingresso INT,
+idusuario INT,
+quantidade INT
+);
+
+CREATE TABLE eventos (
+idevento INT AUTO_INCREMENT NOT NULL PRIMARY KEY,
+nome_evento VARCHAR(250) NOT NULL,
+endereco VARCHAR(200) NOT NULL,
+palavra_chave VARCHAR(50),
+descricao VARCHAR(500) NOT NULL,
+data_inicio_evento DATE NOT NULL,
+data_final_evento DATE NOT NULL,
+horario_inicial TIME,
+horario_final TIME,
+idusuario INT NOT NULL
+);
+
+CREATE TABLE tipo_ingresso (
+id_tipoingresso INT NOT NULL PRIMARY KEY,
+descricao VARCHAR(100)
+);
+
+CREATE TABLE ingresso (
+id_ingresso INT AUTO_INCREMENT NOT NULL PRIMARY KEY,
+quantidade INT NOT NULL,
+valor DECIMAL(10,2),
+id_tipoingresso INT NOT NULL,
+idevento INT NOT NULL
+);
+
+CREATE TABLE iten_loja (
+iditem_loja INT AUTO_INCREMENT NOT NULL PRIMARY KEY,
+nome VARCHAR(250) NOT NULL,
+descricao VARCHAR(300) NOT NULL,
+quantidade INT NOT NULL,
+valor DECIMAL(10,2) NOT NULL,
+idevento INT NOT NULL
+);
+
+CREATE TABLE venda (
+id_venda INT AUTO_INCREMENT NOT NULL PRIMARY KEY,
+nome_item VARCHAR(200) NOT NULL,
+quantidade INT NOT NULL,
+preco_unitario DECIMAL(10,2)
+);
+
+CREATE TABLE login (
+idlogin INT AUTO_INCREMENT NOT NULL PRIMARY KEY,
+email VARCHAR(300) NOT NULL,
+senha VARCHAR(150) NOT NULL,
+idusuario INT NOT NULL
+);
+
+ALTER TABLE usuario ADD FOREIGN KEY (tipo_user) REFERENCES tipo_usuario (id_funcao);
+ALTER TABLE usuario ADD FOREIGN KEY (idcarrinho) REFERENCES carrinho (idcarrinho);
+ALTER TABLE carrinho ADD FOREIGN KEY (iditem_loja) REFERENCES iten_loja (iditem_loja);
+ALTER TABLE carrinho ADD FOREIGN KEY (id_ingresso) REFERENCES ingresso (id_ingresso);
+ALTER TABLE carrinho ADD FOREIGN KEY (idusuario) REFERENCES usuario (idusuario);
+ALTER TABLE eventos ADD FOREIGN KEY (idusuario) REFERENCES usuario (idusuario);
+ALTER TABLE ingresso ADD FOREIGN KEY (id_tipoingresso) REFERENCES tipo_ingresso (id_tipoingresso);
+ALTER TABLE ingresso ADD FOREIGN KEY (idevento) REFERENCES eventos (idevento);
+ALTER TABLE iten_loja ADD FOREIGN KEY (idevento) REFERENCES eventos (idevento);
+ALTER TABLE login ADD FOREIGN KEY (idusuario) REFERENCES usuario (idusuario);
+ALTER TABLE venda ADD COLUMN idusuario INT;
+ALTER TABLE venda ADD FOREIGN KEY (idusuario) REFERENCES usuario (idusuario);
+ALTER TABLE venda ADD COLUMN id_ingresso INT;
+ALTER TABLE venda ADD FOREIGN KEY (id_ingresso) REFERENCES carrinho (id_ingresso);
+ALTER TABLE venda ADD COLUMN cod_ingressos VARCHAR(20);
+ALTER TABLE venda DROP COLUMN cod_ingresso;
+
+INSERT INTO tipo_usuario (id_funcao, descricao) VALUES (1, 'cadastro Pessoal');
+INSERT INTO tipo_usuario (id_funcao, descricao) VALUES (2, 'cadastro Empresarial');
+
+INSERT INTO tipo_ingresso (id_tipoingresso, descricao) VALUES (1, 'entrada inteira');
+INSERT INTO tipo_ingresso (id_tipoingresso, descricao) VALUES (2, 'entrada estudante');
+
+
+USE EventFlow;
+
+select * from login;
+select * from usuario;
+select * from eventos;
+select * from ingresso;
+select * from carrinho;
+select * from iten_loja;
+select * from carrinho_ingresso;
+
+
+versão 2 explicada:
+
+-- Criação da tabela tipo_usuario
+CREATE TABLE tipo_usuario (
+  id_funcao INTEGER,
+  descricao VARCHAR(100),
+  PRIMARY KEY (id_funcao)
+);
+
+-- Criação da tabela usuario com chaves estrangeiras adicionadas
+CREATE TABLE usuario (
+  idusuario INT AUTO_INCREMENT NOT NULL PRIMARY KEY,
+  nome VARCHAR(300) NOT NULL,
+  cpf_cnpj VARCHAR(18),
+  tipo_user INTEGER NOT NULL,
+  telefone VARCHAR(20) NOT NULL,
+  empresa VARCHAR(300) DEFAULT NULL,
+  idcarrinho INT,
+  -- Adiciona chave estrangeira para tipo_usuario
+  -- FOREIGN KEY (tipo_user) REFERENCES tipo_usuario (id_funcao)
+  FOREIGN KEY (tipo_user) REFERENCES tipo_usuario (id_funcao),
+  -- Adiciona chave estrangeira para carrinho
+  -- FOREIGN KEY (idcarrinho) REFERENCES carrinho (idcarrinho)
+  FOREIGN KEY (idcarrinho) REFERENCES carrinho (idcarrinho)
+);
+
+-- Criação da tabela carrinho com chaves estrangeiras adicionadas
+CREATE TABLE carrinho (
+  idcarrinho INT AUTO_INCREMENT NOT NULL PRIMARY KEY,
+  iditem_loja INT,
+  id_ingresso INT,
+  idusuario INT,
+  quantidade INT,
+  -- Adiciona chave estrangeira para iten_loja
+  -- FOREIGN KEY (iditem_loja) REFERENCES iten_loja (iditem_loja)
+  FOREIGN KEY (iditem_loja) REFERENCES iten_loja (iditem_loja),
+  -- Adiciona chave estrangeira para ingresso
+  -- FOREIGN KEY (id_ingresso) REFERENCES ingresso (id_ingresso)
+  FOREIGN KEY (id_ingresso) REFERENCES ingresso (id_ingresso),
+  -- Adiciona chave estrangeira para usuario
+  -- FOREIGN KEY (idusuario) REFERENCES usuario (idusuario)
+  FOREIGN KEY (idusuario) REFERENCES usuario (idusuario)
+);
+
+-- Criação da tabela eventos com chave estrangeira adicionada
+CREATE TABLE eventos (
+  idevento INT AUTO_INCREMENT NOT NULL PRIMARY KEY,
+  nome_evento VARCHAR(250) NOT NULL,
+  endereco VARCHAR(200) NOT NULL,
+  palavra_chave VARCHAR(50),
+  descricao VARCHAR(500) NOT NULL,
+  data_inicio_evento DATE NOT NULL,
+  data_final_evento DATE NOT NULL,
+  horario_inicial TIME,
+  horario_final TIME,
+  idusuario INT NOT NULL,
+  -- Adiciona chave estrangeira para usuario
+  -- FOREIGN KEY (idusuario) REFERENCES usuario (idusuario)
+  FOREIGN KEY (idusuario) REFERENCES usuario (idusuario)
+);
+
+-- Criação da tabela tipo_ingresso
+CREATE TABLE tipo_ingresso (
+  id_tipoingresso INT NOT NULL PRIMARY KEY,
+  descricao VARCHAR(100)
+);
+
+-- Criação da tabela ingresso com chaves estrangeiras adicionadas
+CREATE TABLE ingresso (
+  id_ingresso INT AUTO_INCREMENT NOT NULL PRIMARY KEY,
+  quantidade INT NOT NULL,
+  valor DECIMAL(10,2),
+  id_tipoingresso INT NOT NULL,
+  idevento INT NOT NULL,
+  -- Adiciona chave estrangeira para tipo_ingresso
+  -- FOREIGN KEY (id_tipoingresso) REFERENCES tipo_ingresso (id_tipoingresso)
+  FOREIGN KEY (id_tipoingresso) REFERENCES tipo_ingresso (id_tipoingresso),
+  -- Adiciona chave estrangeira para eventos
+  -- FOREIGN KEY (idevento) REFERENCES eventos (idevento)
+  FOREIGN KEY (idevento) REFERENCES eventos (idevento)
+);
+
+-- Criação da tabela venda
+CREATE TABLE venda (
+  id_venda INT AUTO_INCREMENT NOT NULL PRIMARY KEY,
+  nome_item VARCHAR(200) NOT NULL,
+  quantidade INT NOT NULL,
+  preco_unitario DECIMAL(10,2)
+);
+
+-- Criação da tabela iten_loja com chave estrangeira adicionada
+CREATE TABLE iten_loja (
+  iditem_loja INT AUTO_INCREMENT NOT NULL PRIMARY KEY,
+  nome VARCHAR(250) NOT NULL,
+  descricao VARCHAR(300) NOT NULL,
+  quantidade INT NOT NULL,
+  valor DECIMAL(10,2) NOT NULL,
+  idevento INT NOT NULL,
+  -- Adiciona chave estrangeira para eventos
+  -- FOREIGN KEY (idevento) REFERENCES eventos (idevento)
+  FOREIGN KEY (idevento) REFERENCES eventos (idevento)
+);
+
+-- Criação da tabela login com chave estrangeira adicionada
+CREATE TABLE login (
+  idlogin INT AUTO_INCREMENT NOT NULL PRIMARY KEY,
+  email VARCHAR(300) NOT NULL,
+  senha VARCHAR(150) NOT NULL,
+  idusuario INT NOT NULL,
+  -- Adiciona chave estrangeira para usuario
+  -- FOREIGN KEY (idusuario) REFERENCES usuario (idusuario)
+  FOREIGN KEY (idusuario) REFERENCES usuario (idusuario)
+);
+
+-- Criação da tabela carrinho_ingresso (essa tabela será excluída)
+CREATE TABLE carrinho_ingresso (
+  idcarrinho INT NOT NULL,
+  id_ingresso INT NOT NULL,
+  quantidade INT NOT NULL,
+  PRIMARY KEY (idcarrinho, id_ingresso),
+  -- Adiciona chave estrangeira para carrinho
+  -- FOREIGN KEY (idcarrinho) REFERENCES carrinho (idcarrinho)
+  FOREIGN KEY (idcarrinho) REFERENCES carrinho (idcarrinho),
+  -- Adiciona chave estrangeira para ingresso
+  -- FOREIGN KEY (id_ingresso) REFERENCES ingresso (id_ingresso)
+  FOREIGN KEY (id_ingresso) REFERENCES ingresso (id_ingresso)
+);
+
+-- Adição das chaves estrangeiras nas tabelas (após a criação das tabelas)
+
+-- Adiciona chave estrangeira para tipo_usuario na tabela usuario
+ALTER TABLE usuario
+ADD CONSTRAINT FK_usuario_tipo_user
+FOREIGN KEY (tipo_user) REFERENCES tipo_usuario (id_funcao);
+
+-- Adiciona chave estrangeira para carrinho na tabela usuario
+ALTER TABLE usuario
+ADD CONSTRAINT FK_usuario_idcarrinho
+FOREIGN KEY (idcarrinho) REFERENCES carrinho (idcarrinho);
+
+-- Adiciona chave estrangeira para iten_loja na tabela carrinho
+ALTER TABLE carrinho
+ADD CONSTRAINT FK_carrinho_iditem_loja
+FOREIGN KEY (iditem_loja) REFERENCES iten_loja (iditem_loja);
+
+-- Adiciona chave estrangeira para ingresso na tabela carrinho
+ALTER TABLE carrinho
+ADD CONSTRAINT FK_carrinho_id_ingresso
+FOREIGN KEY (id_ingresso) REFERENCES ingresso (id_ingresso);
+
+-- Adiciona chave estrangeira para usuario na tabela carrinho
+ALTER TABLE carrinho
+ADD CONSTRAINT FK_carrinho_idusuario
+FOREIGN KEY (idusuario) REFERENCES usuario (idusuario);
+
+-- Adiciona chave estrangeira para usuario na tabela eventos
+ALTER TABLE eventos
+ADD CONSTRAINT FK_eventos_idusuario
+FOREIGN KEY (idusuario) REFERENCES usuario (idusuario);
+
+-- Adiciona chave estrangeira para tipo_ingresso na tabela ingresso
+ALTER TABLE ingresso
+ADD CONSTRAINT FK_ingresso_id_tipoingresso
+FOREIGN KEY (id_tipoingresso) REFERENCES tipo_ingresso (id_tipoingresso);
+
+-- Adiciona chave estrangeira para eventos na tabela ingresso
+ALTER TABLE ingresso
+ADD CONSTRAINT FK_ingresso_idevento
+FOREIGN KEY (idevento) REFERENCES eventos (idevento);
+
+-- Adiciona chave estrangeira para eventos na tabela iten_loja
+ALTER TABLE iten_loja
+ADD CONSTRAINT FK_iten_loja_idevento
+FOREIGN KEY (idevento) REFERENCES eventos (idevento);
+
+-- Adiciona chave estrangeira para usuario na tabela login
+ALTER TABLE login
+ADD CONSTRAINT FK_login_idusuario
+FOREIGN KEY (idusuario) REFERENCES usuario (idusuario);

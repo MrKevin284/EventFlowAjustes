@@ -1,0 +1,864 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500;600&display=swap');
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    width: 100vw;
+    height: 100vh;
+    background: linear-gradient(62.74deg, #171717 1.21%, #232323 39.95%, #4A4A4A 100%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: Poppins;
+    min-height: 100vh;
+    border: 0;
+}
+
+
+
+
+/* EventFlow.php */
+
+.cabecalho_eventflow{
+    position: relative;
+    width: 100%;
+    height: 10%;
+    background-color: #4e4e4e;
+    border-radius: none;
+    display: flex;
+    flex-direction: column;
+    border: 3px solid #50C7F6;
+    top: -45%;
+    justify-content: space-between;
+}
+
+.logo_eventflow{
+    position: absolute;
+    height: 100%;
+    width: 5px;
+    display: flex;
+}
+
+.botoes_eventflow{
+    position: absolute;
+    left: 55%;
+    flex-direction: row;
+    justify-content: center;
+    display: flex;
+    align-items: center;
+    height: 100%;
+    font-size: 20px;  
+}
+
+.botoes_eventflow a{
+    color: #fff;
+    font-weight: bold;
+    text-decoration: none;
+    margin-right: 120px;
+}
+
+.botoes_eventflow a:hover {
+    color: #50C7F6;
+    transition: color 0.5s;
+}
+
+#nome_eventflow{
+    color: white;
+    font-size: x-large;
+    position: relative;
+    left: 20%;
+    margin-top: 10px;
+}
+
+.imagem_evento{
+   position: relative;
+   margin-top: 60px;
+   border-bottom: 2px solid #50C7F6;
+}
+
+.container_eventflow {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    height: 100vh;
+}
+
+.caixa_eventos{
+    border-radius: 10px;
+    margin: 10px;
+    background-color: #616363;
+    width: calc(30% - 100px); /* Adjust the width as needed */
+    padding: 10px;
+    border-radius: 5px;
+    font-size: large;
+    box-shadow: 0px 2px 20px 10px rgba(80, 199, 246, 0.75);
+    -webkit-box-shadow: 0px 2px 20px 10px rgba(80, 199, 246, 0.75);
+    -moz-box-shadow: 0px 2px 20px 10px rgba(80, 199, 246, 0.75);
+}
+
+.caixa_eventos {  
+    color: white;
+    text-decoration: none;  
+}
+
+.caixa_eventos a:hover {
+    color: black;
+    transition: color 0.5s;
+}
+
+#todos_os_eventos{
+    color: white;
+    padding: 10px;
+}
+
+#nome_nenhum_evento_encontrado{
+    color: white;
+}
+
+
+
+
+/* login.php */
+
+.container_login {
+    background-color: #4e4e4e;
+    border-radius: 10px;
+    border: 3px solid #50C7F6;
+    width: 400px;
+    max-width: 100%;
+}
+
+.logo_login{
+    position: relative;
+    top: 20%;
+}
+
+.nome_login {
+    padding: 10px 20px;
+}
+
+.nome_login h2 {
+    font-weight: 800;
+    color: white;
+    font-size: 30px;
+}
+
+.form_login {
+    padding: 0 40px 20px;
+}
+
+.form_control_login {
+    margin-bottom: 5px;
+    padding-bottom: 10px;
+    position: relative;
+}
+
+.form_control_login input {
+    border: 2px solid #50C7F6;
+    border-radius: 5px;
+    outline: 0;
+    display: block;
+    font-size: 15px;
+    width: 100%;
+    padding: 15px;
+    border-radius: 10px;
+}
+
+.form_control_login.success input {
+    border: 3px solid #4ECA64;
+}
+
+.form_control_login.error input {
+    border: 3px solid #DB5A5A;
+}
+
+.form_control_login.error i.img-error {
+    visibility: visible;
+}
+
+.form_control_login.success i.img-success {
+    visibility: visible;
+}
+
+.form_control_login.error small{
+    color: #DB5A5A;
+    visibility: visible;
+}
+
+.form_control_login i {
+    position: absolute;
+    top: 45px;
+    right: 10px;
+    visibility: hidden;
+}
+
+.form_control_login small {
+    visibility: hidden;
+    position: relative;
+    margin-top: 5px;
+    font-size: 15px;   
+}
+
+.form_login button {
+    background-color: #50C7F6;
+    border-radius: 5px;
+    color: #fff;
+    padding: 15px;
+    font-size: larger;
+    font-weight: 800;
+    width: 100%;
+    margin-top: 10px;
+    cursor: pointer;
+    border-radius: 10px;
+    margin-bottom: 10px;
+}
+
+.form_login button:hover {
+    background-color: grey;
+    transition: 0.3s;
+}
+
+.senha_e_conta a {
+    text-decoration: none;
+    color: #50C7F6;
+    text-align: center;
+    transition: color 0.5s;  
+}
+
+.senha_e_conta a:hover {
+    color: white;
+}
+
+.password-toggle {
+    position: relative;
+}
+
+.password-toggle input[type="password"] {
+    padding-right: 10px; 
+}
+
+.password-toggle .toggle-icon {
+    position: absolute;
+    top: 36%;
+    right: 10px;
+    transform: translateY(-50%);
+    cursor: pointer;
+    width: 24px; /* Defina o tamanho desejado */
+    height: 24px; /* Defina o tamanho desejado */
+}
+
+.senha_olho{
+    position: relative;
+}
+
+.botao_entrar_login button {
+    background-color: #50C7F6;
+    border-radius: 5px;
+    color: #fff;
+    padding: 10px;
+    font-size: larger;
+    width: 70%;
+    margin-top: 10px;
+    cursor: pointer;
+    border-radius: 10px;
+    margin-bottom: 10px;
+}
+
+.botao_entrar_login button:hover {
+    background-color: grey;
+    transition: 0.3s;
+}
+
+
+
+
+/* sobre_nos.php */
+
+.cabecalho_sobre_nos{
+    position: relative;
+    width: 100%;
+    height: 10%;
+    background-color: #4e4e4e;
+    border-radius: none;
+    display: flex;
+    flex-direction: column;
+    border: 3px solid #50C7F6;
+    top: -45%;
+    justify-content: space-between;
+}
+
+.logo_sobre_nos{
+    position: absolute;
+    height: 100%;
+    width: 5px;
+    display: flex;
+}
+
+.botoes_sobre_nos{
+    position: absolute;
+    left: 60%;
+    flex-direction: row;
+    justify-content: center;
+    display: flex;
+    align-items: center;
+    height: 100%;
+    font-size: 20px;  
+}
+
+.botoes_sobre_nos a{
+    color: #fff;
+    font-weight: bold;
+    text-decoration: none;
+    margin-right: 100px;
+}
+
+.botoes_sobre_nos a:hover {
+    color: #50C7F6;
+    transition: color 0.5s;
+}
+
+#nome_eventflow{
+    color: white;
+    font-size: x-large;
+    position: absolute;
+}
+
+.container_sobre_nos {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 90vh;
+}
+
+.dados_sobre_nos{
+    padding: 10px;
+    position: relative;
+}
+
+.dados_sobre_nos li{
+    padding: 5px;
+}
+
+.conteudo_sobre_nos{
+    color: white;
+    border-radius: 10px;
+    display: inline-block;
+    padding: 15px;
+    border-radius: 5px;
+    font-size: medium;
+    position: relative;
+    margin-top: 100px;
+}
+
+.conteudo_sobre_nos a{  
+    color: #50C7F6;
+    text-decoration: none;  
+}
+
+.conteudo_sobre_nos a:hover {
+    color: blue;
+    transition: color 0.5s;
+}
+
+#nome_contato{
+    font-size: 26px;
+}
+
+
+
+
+/* esqueci_senha.php */
+
+.container_senha {
+    background-color: #4e4e4e;
+    border-radius: 10px;
+    border: 3px solid #50C7F6;
+    width: 500px;
+    max-width: 100%;
+}
+  
+.nome_senha {
+    padding: 10px 20px;
+}
+    
+.nome_senha h2 {
+    font-weight: 800;
+    color: white;
+    font-size: 30px;
+}
+    
+.form_senha {
+    padding: 0 40px 20px;
+    align-items: center;
+}
+    
+.form_control_senha {
+    margin-bottom: 5px;
+    padding-bottom: 10px;
+    position: relative; 
+}
+    
+.form_control_senha input {
+    border: 2px solid #50C7F6;
+    border-radius: 5px;
+    outline: 0;
+    display: block;
+    font-size: 15px;
+    width: 100%;
+    padding: 15px;
+    border-radius: 10px;
+}
+    
+.form_control_senha.success input {
+    border: 3px solid #4ECA64;
+}
+    
+.form_control_senha.error input {
+    border: 3px solid #DB5A5A;
+}
+    
+.form_control_senha.error i.img-error {
+    visibility: visible;
+}
+    
+.form_control_senha.success i.img-success {
+    visibility: visible;
+}
+    
+.form_control_senha.error small{
+    color: #DB5A5A;
+    visibility: visible;
+}
+    
+.form_control_senha i {
+    position: absolute;
+    top: 45px;
+    right: 10px;
+    visibility: hidden;
+}
+    
+.form_control_senha small {
+    visibility: hidden;
+    position: relative;
+    margin-top: 5px;
+    font-size: 15px;   
+}
+   
+.form_senha button {
+    background-color: #50C7F6;
+    border-radius: 5px;
+    color: #fff;
+    padding: 15px;
+    font-size: larger;
+    font-weight: 800;
+    width: 100%;
+    margin-top: 10px;
+    cursor: pointer;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+    
+.form_senha button:hover {
+    background-color: grey;
+    transition: 0.3s;
+}
+    
+.voltar_senha a {
+    background-color: #50C7F6;
+    position: absolute;
+    border-radius: 100%;
+    margin-top: 10px;
+    margin-left: 10px;
+}
+
+.botao_concluir_esqueci_senha button {
+    background-color: #50C7F6;
+    border-radius: 5px;
+    color: #fff;
+    padding: 10px;
+    font-size: larger;
+    width: 70%;
+    margin-top: 10px;
+    cursor: pointer;
+    border-radius: 10px;
+    margin-bottom: 10px;
+}
+
+.botao_concluir_esqueci_senha button:hover {
+    background-color: grey;
+    transition: 0.3s;
+}
+
+
+
+
+      
+
+@media (max-width: 768px) {
+    .form_login_senha {
+        width: 80%;
+        height: 65%;
+    }
+
+    .voltar_senha{
+        height: 60px;
+        position: absolute;
+        left: 7%;
+        top: 19%;
+    }
+
+    #redefinir_senha {
+        width: 30rem;
+    }
+
+    .login_senha input {
+        width: 25rem;
+    }
+
+    .concluir button {
+        width: 12rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .form_login_senha {
+        width: 90%;
+    }
+
+    .voltar_senha{
+        width: 4rem;
+    }
+
+    #redefinir_senha {
+        width: 20rem;
+    }
+
+    .login_senha input {
+        width: 18rem;
+    }
+
+    .concluir button {
+        width: 10rem;
+    }
+}
+
+
+
+
+/* tipo_de_usuario.php */
+
+.container_usuario {
+    background-color: #4e4e4e;
+    border-radius: 10px;
+    border: 3px solid #50C7F6;
+    width: 500px;
+    max-width: 100%;
+}
+    
+.logo_usuario{
+    position: relative;
+    top: 20%;
+}
+    
+.nome_usuario {
+    padding: 20px 30px;  
+}
+    
+.nome_usuario h2 {
+    font-weight: 800;
+    color: white;
+    font-size: 30px;
+}
+    
+.control_usuario {
+    padding-bottom: 10px;
+    position: relative;
+}
+    
+.control_usuario a {
+    border: 2px solid #50C7F6;
+    border-radius: 5px;
+    outline: 0;
+    display: block;
+    font-size: 15px;
+    width: 90%;
+    padding: 15px;
+    border-radius: 10px;
+    text-decoration: none;
+    background-color: #50C7F6;
+    color: white;
+    padding-bottom: 10px;
+    margin-top: 30px; 
+}
+
+.control_usuario a:hover {
+    color: grey;
+    transition: color 0.5s;
+}
+     
+.voltar_usuario a {
+    text-decoration: none;
+    color: #50C7F6;
+    padding: 5px;
+}
+    
+.voltar_usuario a:hover {
+    color: white;
+    transition: color 0.5s;
+}
+
+
+@media (max-width: 768px) {
+    .fundo_tipo_cadastro {
+        width: 80%;
+        height: 60%;
+
+    }
+
+    .logo_usuario{
+        position: absolute;
+        top: 25%;
+    }
+
+    .voltar_usuario a {
+        left: 50%;
+        transform: translateX(-50%);
+        margin-top: 70px;
+    }
+}
+
+@media (max-width: 480px) {
+    .fundo_tipo_cadastro {
+        width: 90%;
+    }
+}
+
+
+
+
+/* cadastro_empresarial.php */
+
+.container_empresarial {
+    background-color: #4e4e4e;
+    border-radius: 10px;
+    border: 3px solid #50C7F6;
+    width: 500px;
+    max-width: 50%;
+    max-height: 100%;
+}
+
+.nome_empresarial {
+    padding: 30px 40px;
+}
+
+.nome_empresarial h2 {
+    font-weight: 800;
+    color: white;
+    font-size: 30px;
+}
+
+.form_empresarial {
+    padding: 0 20px 5px;
+}
+
+.form_control_empresarial {
+    margin-bottom: 1px;
+    padding-bottom: 5px;
+    position: relative;
+}
+
+.form_control_empresarial input {
+    border: 2px solid #50C7F6;
+    border-radius: 5px;
+    outline: 0;
+    display: block;
+    font-size: 15px;
+    width: 100%;
+    padding: 15px;
+    border-radius: 10px;
+    margin-top: 10px;
+}
+
+.form_control_empresarial i {
+    position: absolute;
+    top: 45px;
+    right: 10px;
+    visibility: hidden;
+}
+
+.form_empresarial button {
+    background-color: #50C7F6;
+    border-radius: 5px;
+    color: #fff;
+    padding: 15px;
+    font-size: larger;
+    font-weight: 800;
+    width: 50%;
+    margin-top: 10px;
+    cursor: pointer;
+    border-radius: 10px;
+    margin-bottom: 10px;
+}
+
+.form_empresarial button:hover {
+    background-color: grey;
+    transition: 0.3s;
+}
+
+.voltar_empresarial a {
+    background-color: #50C7F6;
+    position: absolute;
+    border-radius: 100%;
+    margin-top: 10px;
+    margin-left: 10px;
+}
+
+
+@media (max-width: 768px) {
+    .form_cadastro_pessoal {
+      width: 90%;
+    }
+  
+    #usuario_pessoal {
+      width: 100%;
+    }
+  
+    .login_cadastro_pessoal input {
+      width: 100%;
+    }
+  
+    .concluir_usuario_pessoal button {
+      width: 100%;
+    }
+  
+    .voltar_usuario_pessoal {
+      top: 2%;
+      left: 80%;
+      width: 10%;
+      height: 6%;
+    }
+  }
+
+
+
+
+/* cadastro_pessoal.php */
+
+.container_pessoal {
+    background-color: #4e4e4e;
+    border-radius: 10px;
+    border: 3px solid #50C7F6;
+    width: 500px;
+    max-width: 50%;
+    max-height: 100%;
+}
+
+.nome_pessoal {
+    padding: 40px 50px;
+}
+
+.nome_pessoal h2 {
+    font-weight: 800;
+    color: white;
+    font-size: 30px;
+}
+
+.form_pessoal {
+    padding: 0 20px 5px;
+}
+
+.form_control_pessoal {
+    margin-bottom: 1px;
+    padding-bottom: 5px;
+    position: relative;
+}
+
+.form_control_pessoal input {
+    border: 2px solid #50C7F6;
+    border-radius: 5px;
+    outline: 0;
+    display: block;
+    font-size: 15px;
+    width: 100%;
+    padding: 15px;
+    border-radius: 10px;
+    margin-top: -10px;
+}
+
+.form_control_pessoal i {
+    position: absolute;
+    top: 45px;
+    right: 10px;
+    visibility: hidden;
+}
+
+.form_pessoal button {
+    background-color: #50C7F6;
+    border-radius: 5px;
+    color: #fff;
+    padding: 15px;
+    font-size: larger;
+    font-weight: 800;
+    width: 50%;
+    margin-top: 10px;
+    cursor: pointer;
+    border-radius: 10px;
+    margin-bottom: 10px;
+}
+
+.form_pessoal button:hover {
+    background-color: grey;
+    transition: 0.3s;
+}
+
+.voltar_pessoal a {
+    background-color: #50C7F6;
+    position: absolute;
+    border-radius: 100%;
+    margin-top: 10px;
+    margin-left: 10px;
+}
+
+
+@media (max-width: 768px) {
+    .form_cadastro_empresarial {
+      width: 90%;
+      height: auto;
+    }
+  
+    .logo_cadastro_empresarial {
+      top: 2%;
+      height: 1.5rem;
+    }
+  
+    #usuario_empresarial {
+      width: 100%;
+      font-size: 1.5rem;
+      margin-bottom: 3rem;
+      top: 10%;
+    }
+  
+    .login_cadastro_empresarial input {
+      width: 100%;
+    }
+  
+    .concluir_usuario_empresarial button {
+      width: 100%;
+      height: 3rem;
+      font-size: 1rem;
+      margin-bottom: 2rem;
+      top: 0;
+    }
+  
+    .voltar_usuario_empresarial {
+      top: 2%;
+      left: 80%;
+      width: 10%;
+      height: 6%;
+    }
+  }
