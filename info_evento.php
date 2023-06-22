@@ -12,7 +12,7 @@
         <div class="cabecalho_info_evento">
 
             <div class="logo_info_evento">
-                <img src="assets/imagens/logo_fundo_removido.png" alt="Logo EventFlow">
+            <a href="eventos.php"><img src="assets/imagens/logo_fundo_removido.png" alt="Logo EventFlow" title="Início" width="200"></a>
             </div>
 
             <?php
@@ -50,7 +50,7 @@
                     <a href="eventos_criados.php"><label>Eventos Criados</label></a>
                 <?php else: // Cadastro Pessoal ?>
                     <a href="eventos.php"><label>Eventos</label></a>
-                    <a href="meus_eventos.php"><label>Meus Eventos</label></a>
+                    <a href="eventos_criados.php"><label>Meus Eventos</label></a>
                 <?php endif; ?>
                 <a href="carrinho.php">Carrinho</a>
                 <a href="perfil.php"><label>Perfil</label></a>
@@ -73,7 +73,7 @@
                     $dados_evento = mysqli_fetch_assoc($resultado_evento);
 
                     if ($dados_evento) {
-                        echo '<h1>' . $dados_evento['nome_evento'] . '</h1>';
+                        echo '<h1>' . $dados_evento['nome_evento'] . '</h1><hr>';
 
                         // Formatando a data do evento para o padrão brasileiro
                         $data_inicio_evento = date('d/m/Y', strtotime($dados_evento['data_inicio_evento']));

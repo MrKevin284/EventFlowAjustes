@@ -5,14 +5,15 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Loja</title>
-    <!-- Inclua aqui seus estilos CSS -->
+    <link rel="stylesheet" href="assets/css/style2.css">
 </head>
 <body>
-    <div class="container_loja">
-        <div class="cabecalho_loja">
+    <div class="cabecalho_loja">
+        
             <div class="logo_loja">
-                <img src="assets/imagens/logo_fundo_removido.png" alt="Logo EventFlow">
+            <a href="eventos.php"><img src="assets/imagens/logo_fundo_removido.png" alt="Logo EventFlow" title="Início" width="200"></a>
             </div>
+            
             <?php
             // Incluir o arquivo de conexão com o banco de dados
             require_once "conexao.php";
@@ -54,11 +55,14 @@
                 <a href="perfil.php"><label>Perfil</label></a>
                 <a href="EventFlow.php"><label>Logout</label></a>
             </nav>
-        </div>
+      
 
-        <div class="container_loja_2">
+        <div class="container_loja">
             <div class="caixa_loja">
-                <h1>Loja</h1>
+
+                <center>
+                <h1>Loja</h1><hr>
+                </center>
 
                 <?php
                 // Verificar se foi fornecido o parâmetro de ID do evento
@@ -100,7 +104,7 @@
 
                         if ($num_itens_loja > 0) {
                             // Exibir os itens da loja
-                            echo "<h3>Itens disponíveis na loja do evento:</h3>";
+                            echo "<h3>Itens disponíveis na loja do evento:</h3>","<br>";
                             echo "<div class='itens_loja'>";
                             while ($row_item = mysqli_fetch_assoc($resultado_itens_loja)) {
                                 $id_item = $row_item['iditem_loja'];
@@ -112,6 +116,7 @@
                                 echo "<h4>$nome_item</h4>";
                                 echo "<p>Preço: R$ $preco_item</p>";
                                 echo "<p>Descrição: $descricao_item</p>";
+                                
 
                                 // Exibir botão "Adicionar ao Carrinho" apenas para não criadores de evento
                                 if (!$eh_criador_evento) {
@@ -121,7 +126,7 @@
                                 // Exibir botão "Excluir" apenas para o criador do evento
                                 if ($eh_criador_evento) {
                                     echo "<a href='editar_item.php?id=$id_item'>Editar</a>";
-                                    echo "<span onclick=\"excluirItem($id_item, $id_evento)\">Excluir</span>";
+                                    echo "<span onclick=\"excluirItem($id_item, $id_evento)\"><button>Excluir</button></span>","<hr>";
                                 }
 
                                 echo "</div>";
@@ -157,5 +162,6 @@
             }
         }
     </script>
+
 </body>
-</html>
+</html> 

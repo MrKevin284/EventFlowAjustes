@@ -43,13 +43,13 @@ $empresaUsuario = $dadosUsuario['empresa'];
         <div class="cabecalho">
 
         <div class="logo_perfil">
-            <img src="assets/imagens/logo_fundo_removido.png" alt="Logo EventFlow">
+        <a href="eventos.php"><img src="assets/imagens/logo_fundo_removido.png" alt="Logo EventFlow" title="Início" width="200"></a>
         </div>
             
             <nav class="botoes_perfil">
             <?php if ($tipoUsuario == 1) { ?>
                     <a href="eventos.php"><label>Eventos</label></a>
-                    <a href="eventos_criados.php"><label>Meus Eventos</label></a>
+                    <a href="eventos_criados.php"><label>Meus Ingressos</label></a>
                     <a href="carrinho.php"><label>Carrinho</label></a>
                     <a href="EventFlow.php"><label>Logout</label></a>
                 <?php } elseif ($tipoUsuario == 2) { ?>
@@ -65,7 +65,7 @@ $empresaUsuario = $dadosUsuario['empresa'];
         <center>
         <div class="container_perfil_2">
             <div class="informacoes_perfil">
-                <h2 id="nome_informacoes_do_perfil">Informações do Perfil</h2>
+                <h2 id="nome_informacoes_do_perfil">Informações do Perfil</h2><hr>
             
                 <div class="dados_perfil">
                     <label>Nome: </label>
@@ -94,6 +94,7 @@ $empresaUsuario = $dadosUsuario['empresa'];
 
                     <div class="editar_informações">
                         <a href="editar_perfil.php">Editar Informações</a>
+                        <a href="historico.php">Histórico</a>
                     </div>
 
                 </div>

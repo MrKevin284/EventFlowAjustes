@@ -59,18 +59,18 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Editar Item</title>
-    <!-- Inclua aqui seus estilos CSS -->
+    <link rel="stylesheet" href="assets/css/style2.css">
 </head>
 <body>
 
-<div class="container_cadastrar_produto">
+<div class="cabecalho_editar_item">
     <!-- Logo -->
-    <div class="logo_loja">
-        <img src="assets/imagens/logo_fundo_removido.png" alt="Logo EventFlow">
+    <div class="logo_editar_item">
+    <a href="eventos.php"><img src="assets/imagens/logo_fundo_removido.png" alt="Logo EventFlow" title="Inicio" width="200"></a>
     </div>
 
     <!-- Botões de Navegação -->
-    <nav class="botoes_loja">
+    <nav class="botoes_editar_item">
         <?php
         if ($tipo_usuario == 2) {
             echo '<a href="criar_eventos.php"><label>Criar Eventos</label></a>';
@@ -87,21 +87,27 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     </nav>
 
     <div class="container_editar_item">
-        <h1>Editar Item</h1>
-
+        
+        <div class="caixa_editar_item">
+        <center>
+        <h1>Editar Item</h1><hr>
+        </center>
         <form method="POST" action="">
             <label for="nome_item">Nome:</label>
             <input type="text" name="nome_item" value="<?php echo $row_item['nome']; ?>" required><br>
             <label for="descricao_item">Descrição:</label>
-            <textarea name="descricao_item" rows="4" required><?php echo $row_item['descricao']; ?></textarea><br>
+            <textarea name="descricao_item" rows="4" required style="resize: none"><?php echo $row_item['descricao']; ?></textarea><br>
             <label for="quantidade_item">Quantidade:</label>
             <input type="number" name="quantidade_item" min="1" value="<?php echo $row_item['quantidade']; ?>" required><br>
             <label for="preco_item">Preço:</label>
             <input type="number" name="preco_item" step="0.01" value="<?php echo $row_item['valor']; ?>" required><br>
-            <input type="submit" value="Atualizar">
+            <button type="submit" value="Atualizar">Atualizar</button>
         </form>
         <br>
+        <center>
         <a href="loja.php?id=<?php echo $row_item['idevento']; ?>">Voltar para a Loja</a>
+        </center>
+        </div>
     </div>
 </div>
 

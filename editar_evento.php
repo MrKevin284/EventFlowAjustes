@@ -1,123 +1,169 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Editar Evento</title>
+    <link rel="stylesheet" href="assets/css/style2.css">
 </head>
 <body>
-    <div class="logo_principal">
-        <img src="assets/imagens/logo_fundo_removido.png" alt="Logo EventFlow">
-    </div>
+    <div class="cabecalho_editar_evento">
 
-    <a href="eventos.php">Eventos</a>
-    <a href="eventos_criados.php">Eventos Criados</a>
-    <a href="carrinho.php">Carrinho</a>
-    <a href="perfil.php">Perfil</a>
-    <a href="EventFlow.php">Logout</a>
+            <div class="logo_editar_evento">
+            <a href="eventos.php"><img src="assets/imagens/logo_fundo_removido.png" alt="Logo EventFlow" title="Início" width="200"></a>
+            </div>
 
-    <h1>Editar Evento</h1>
+            <nav class="botoes_editar_evento">
+                <a href="eventos.php">Eventos</a>
+                <a href="eventos_criados.php">Eventos Criados</a>
+                <a href="carrinho.php">Carrinho</a>
+                <a href="perfil.php">Perfil</a>
+                <a href="EventFlow.php">Logout</a>
+            </nav>
+            
+                <?php
+                // Incluir o arquivo de conexão com o banco de dados
+                require_once 'conexao.php';
 
-    <?php
-    require_once "conexao.php";
+                // Verificar se o ID do evento foi fornecido via GET
+                if (isset($_GET['id'])) {
+                    $idEvento = $_GET['id'];
 
-    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-        // Verificar se todos os campos foram preenchidos
-        if (empty($_POST['nome_evento']) || empty($_POST['data_inicio']) || empty($_POST['data_termino']) ||
-            empty($_POST['horario_inicio']) || empty($_POST['horario_termino']) || empty($_POST['descricao']) ||
-            empty($_POST['endereco']) || empty($_POST['id_evento']) || empty($_POST['quantidade_ingressos'])) {
-            echo "Por favor, preencha todos os campos.";
-        } else {
-            // Obter os valores dos campos do formulário
-            $id_evento = $_POST['id_evento'];
-            $nome_evento = $_POST['nome_evento'];
-            $data_inicio = $_POST['data_inicio'];
-            $data_termino = $_POST['data_termino'];
-            $horario_inicio = $_POST['horario_inicio'];
-            $horario_termino = $_POST['horario_termino'];
-            $descricao = $_POST['descricao'];
-            $endereco = $_POST['endereco'];
-            $quantidade_ingressos = $_POST['quantidade_ingressos'];
+                    // Verificar se o formulário foi enviado
+                    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+                        // Obter os dados do formulário para atualizar o evento
+                        $nomeEvento = $_POST['nome_evento'];
+                        $endereco = $_POST['endereco'];
+                        $descricao = $_POST['descricao'];
+                        $dataInicioEvento = $_POST['data_inicio_evento'];
+                        $dataFinalEvento = $_POST['data_final_evento'];
+                        $horarioInicial = $_POST['horario_inicial'];
+                        $horarioFinal = $_POST['horario_final'];
 
-            // Atualizar os dados do evento no banco de dados
-            $query = "UPDATE eventos SET nome_evento = '$nome_evento', data_inicio_evento = '$data_inicio', 
-                      data_final_evento = '$data_termino', horario_inicial = '$horario_inicio', 
-                      horario_final = '$horario_termino', descricao = '$descricao', endereco = '$endereco' 
-                      WHERE idevento = $id_evento";
+                        // Atualizar os dados do evento no banco de dados
+                        $queryAtualizarEvento = "UPDATE eventos SET nome_evento = ?, endereco = ?, descricao = ?, data_inicio_evento = ?, data_final_evento = ?, horario_inicial = ?, horario_final = ? WHERE idevento = ?";
+                        $stmtAtualizarEvento = $conexao->prepare($queryAtualizarEvento);
+                        $stmtAtualizarEvento->bind_param('sssssisi', $nomeEvento, $endereco, $descricao, $dataInicioEvento, $dataFinalEvento, $horarioInicial, $horarioFinal, $idEvento);
+                        $resultadoAtualizarEvento = $stmtAtualizarEvento->execute();
 
-            if (mysqli_query($conexao, $query)) {
-                // Atualizar a quantidade de ingressos no banco de dados
-                $query_ingresso = "UPDATE ingresso SET quantidade = $quantidade_ingressos WHERE idevento = $id_evento";
+                        // Verificar se a atualização do evento foi bem-sucedida
+                        if ($resultadoAtualizarEvento) {
+                            // Redirecionar para a página de eventos após a atualização bem-sucedida
+                            header('Location: eventos.php');
+                            exit();
+                        } else {
+                            // Exibir mensagem de erro caso a atualização do evento tenha falhado
+                            echo 'Erro ao atualizar o evento.';
+                        }
 
-                if (mysqli_query($conexao, $query_ingresso)) {
-                    echo "Evento e quantidade de ingressos atualizados com sucesso!";
+                        // Obter os dados dos ingressos para atualizar
+                        $quantidades = $_POST['quantidade'];
+                        $valores = $_POST['valor'];
+
+                        // Atualizar os ingressos do evento no banco de dados
+                        $queryAtualizarIngressos = "UPDATE ingresso SET quantidade = ?, valor = ? WHERE id_ingresso = ? AND idevento = ?";
+                        $stmtAtualizarIngressos = $conexao->prepare($queryAtualizarIngressos);
+
+                        foreach ($quantidades as $indice => $quantidade) {
+                            $valor = $valores[$indice];
+                            $idIngresso = $indice + 1; // Supondo que os IDs dos ingressos começam em 1
+
+                            $stmtAtualizarIngressos->bind_param('ddii', $quantidade, $valor, $idIngresso, $idEvento);
+                            $resultadoAtualizarIngressos = $stmtAtualizarIngressos->execute();
+
+                            // Verificar se a atualização do ingresso foi bem-sucedida
+                            if (!$resultadoAtualizarIngressos) {
+                                // Exibir mensagem de erro caso a atualização do ingresso tenha falhado
+                                echo 'Erro ao atualizar os ingressos.';
+                                break; // Sair do loop em caso de erro
+                            }
+                        }
+                    }
+
+                    // Obter os dados do evento do banco de dados
+                    $queryObterEvento = "SELECT * FROM eventos WHERE idevento = ?";
+                    $stmtObterEvento = $conexao->prepare($queryObterEvento);
+                    $stmtObterEvento->bind_param('i', $idEvento);
+                    $stmtObterEvento->execute();
+                    $resultadoObterEvento = $stmtObterEvento->get_result();
+
+                    // Verificar se o evento foi encontrado
+                    if ($resultadoObterEvento && $resultadoObterEvento->num_rows > 0) {
+                        $evento = $resultadoObterEvento->fetch_assoc();
+                    } else {
+                        // Redirecionar para a página de eventos se o evento não for encontrado
+                        header('Location: eventos.php');
+                        exit();
+                    }
+
+                    // Obter os dados dos ingressos do evento do banco de dados
+                    $queryObterIngressos = "SELECT * FROM ingresso WHERE idevento = ?";
+                    $stmtObterIngressos = $conexao->prepare($queryObterIngressos);
+                    $stmtObterIngressos->bind_param('i', $idEvento);
+                    $stmtObterIngressos->execute();
+                    $resultadoObterIngressos = $stmtObterIngressos->get_result();
+
+                    // Verificar se existem ingressos para o evento
+                    if ($resultadoObterIngressos && $resultadoObterIngressos->num_rows > 0) {
+                        $ingressos = $resultadoObterIngressos->fetch_all(MYSQLI_ASSOC);
+                    } else {
+                        $ingressos = array();
+                    }
                 } else {
-                    echo "Erro ao atualizar a quantidade de ingressos: " . mysqli_error($conexao);
+                    // Redirecionar para a página de eventos se o ID do evento não for fornecido
+                    header('Location: eventos.php');
+                    exit();
                 }
-            } else {
-                echo "Erro ao atualizar o evento: " . mysqli_error($conexao);
-            }
-        }
-    } else {
-        // Verificar se foi fornecido o parâmetro de ID do evento
-        if (isset($_GET['id'])) {
-            // Obter o ID do evento a partir do parâmetro da URL
-            $id_evento = $_GET['id'];
-
-            // Consultar o evento no banco de dados
-            $query_evento = "SELECT * FROM eventos WHERE idevento = $id_evento";
-            $resultado_evento = mysqli_query($conexao, $query_evento);
-            $dados_evento = mysqli_fetch_assoc($resultado_evento);
-
-            if ($dados_evento) {
-                // Consultar a quantidade de ingressos do evento
-                $query_ingresso = "SELECT quantidade FROM ingresso WHERE idevento = $id_evento";
-                $resultado_ingresso = mysqli_query($conexao, $query_ingresso);
-                $dados_ingresso = mysqli_fetch_assoc($resultado_ingresso);
-
-                // Exibir o formulário de edição do evento com os dados preenchidos
                 ?>
 
-                <form action="editar_evento.php" method="POST">
-                    <input type="hidden" name="id_evento" value="<?php echo $id_evento; ?>">
+            <div class="cabecalho_editar_evento_2">
+                <div class="caixa_editar_evento">
+                    
+                    <form method="POST">
+                        <div class="informacoes_editar_evento">
+                        <center>
+                        <h1>Editar Evento</h1><hr>
+                        </center>
+                        <label for="nome_evento">Nome do Evento:</label>
+                        <input type="text" id="nome_evento" name="nome_evento" value="<?php echo $evento['nome_evento']; ?>">
 
-                    <label for="nome_evento">Nome do Evento:</label>
-                    <input type="text" name="nome_evento" value="<?php echo $dados_evento['nome_evento']; ?>"><br><br>
+                        <label for="endereco">Endereço:</label>
+                        <input type="text" id="endereco" name="endereco" value="<?php echo $evento['endereco']; ?>"><br>
 
-                    <label for="data_inicio">Data de Início:</label>
-                    <input type="date" name="data_inicio" value="<?php echo $dados_evento['data_inicio_evento']; ?>"><br><br>
+                        <label for="descricao">Descrição:</label><br>
+                        <textarea id="descricao" name="descricao" style="resize: none"><?php echo $evento['descricao']; ?></textarea><br>
 
-                    <label for="data_termino">Data de Término:</label>
-                    <input type="date" name="data_termino" value="<?php echo $dados_evento['data_final_evento']; ?>"><br><br>
+                        <label for="data_inicio_evento">Data de Início do Evento:</label>
+                        <input type="date" id="data_inicio_evento" name="data_inicio_evento" value="<?php echo $evento['data_inicio_evento']; ?>">
 
-                    <label for="horario_inicio">Horário de Início:</label>
-                    <input type="time" name="horario_inicio" value="<?php echo $dados_evento['horario_inicial']; ?>"><br><br>
+                        <label for="data_final_evento">Data de Término do Evento:</label>
+                        <input type="date" id="data_final_evento" name="data_final_evento" value="<?php echo $evento['data_final_evento']; ?>"><br>
 
-                    <label for="horario_termino">Horário de Término:</label>
-                    <input type="time" name="horario_termino" value="<?php echo $dados_evento['horario_final']; ?>"><br><br>
+                        <label for="horario_inicial">Horário de Início:</label>
+                        <input type="time" id="horario_inicial" name="horario_inicial" value="<?php echo $evento['horario_inicial']; ?>">
 
-                    <label for="descricao">Descrição:</label>
-                    <textarea name="descricao"><?php echo $dados_evento['descricao']; ?></textarea><br><br>
+                        <label for="horario_final">Horário de Término:</label>
+                        <input type="time" id="horario_final" name="horario_final" value="<?php echo $evento['horario_final']; ?>"><br>
 
-                    <label for="endereco">Endereço:</label>
-                    <input type="text" name="endereco" value="<?php echo $dados_evento['endereco']; ?>"><br><br>
-
-                    <label for="quantidade_ingressos">Quantidade de Ingressos:</label>
-                    <input type="number" name="quantidade_ingressos" value="<?php echo $dados_ingresso['quantidade']; ?>"><br><br>
-
-                    <button type="submit">Salvar</button>
-                </form>
-
-                <?php
-            } else {
-                echo "Evento não encontrado.";
-            }
-        } else {
-            echo "Evento não especificado.";
-        }
-    }
-    ?>
-
+                        <h2>Ingressos</h2>
+                            <?php foreach ($ingressos as $ingresso): ?>
+                                <label for="quantidade_<?php echo $ingresso['id_ingresso']; ?>">Quantidade:</label>
+                                <input type="number" id="quantidade_<?php echo $ingresso['id_ingresso']; ?>" name="quantidade[<?php echo $ingresso['id_ingresso']; ?>]" value="<?php echo $ingresso['quantidade']; ?>"><br>
+                                <label for="valor_<?php echo $ingresso['id_ingresso']; ?>">Valor:</label>
+                                <input type="text" id="valor_<?php echo $ingresso['id_ingresso']; ?>" name="valor[<?php echo $ingresso['id_ingresso']; ?>]" value="<?php echo $ingresso['valor']; ?>">
+                                <label for="valor_estudante_<?php echo $ingresso['id_ingresso']; ?>">Valor Estudante:</label>
+                                <input type="text" id="valor_estudante_<?php echo $ingresso['id_ingresso']; ?>" name="valor_estudante[<?php echo $ingresso['id_ingresso']; ?>]" value="<?php echo $ingresso['valor']/2; ?>" readonly><br>
+                            <?php endforeach; ?>
+                            </div>
+                            
+                        <div class="atualizar_editar_evento">
+                            <button type="submit" value="Atualizar">Atualizar</button>
+                            <?php
+                            echo '<a href="info_evento.php?id="><button>Voltar</button></a>';
+                            ?> 
+                        </div>
+                    </form>       
+                </div>
+            </div>      
+    </div>
+        
 </body>
 </html>

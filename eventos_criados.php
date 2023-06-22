@@ -11,7 +11,7 @@
     <div class="cabecalho_eventos_criados">
 
         <div class="logo_eventos_criados">
-            <img src="assets/imagens/logo_fundo_removido.png" alt="Logo EventFlow">
+        <a href="eventos.php"><img src="assets/imagens/logo_fundo_removido.png" alt="Logo EventFlow" title="Início" width="200"></a>
         </div>
 
         <?php

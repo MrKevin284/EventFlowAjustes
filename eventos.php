@@ -10,8 +10,8 @@
 <body>
     <div class="cabecalho_eventos">
             
-            <div class="logo_eventos">
-                <img src="assets/imagens/logo_fundo_removido.png" alt="Logo EventFlow">
+            <div class="logo_eventos"> 
+            <img src="assets/imagens/logo_fundo_removido.png" alt="Logo EventFlow" width="200">
             </div>
 
             <?php
@@ -37,7 +37,7 @@
             <nav class="botoes_eventos">
                 <?php if ($tipo_usuario == 1) { ?>
                     <a href="perfil.php"><label>Perfil</label></a>
-                    <a href="eventos_criados.php"><label>Meus Eventos</label></a>
+                    <a href="historico_ingressos.php"><label>Meus Ingressos</label></a>
                     <a href="carrinho.php"><label>Carrinho</label></a>
                     <a href="EventFlow.php"><label>Logout</label></a>
                 <?php } elseif ($tipo_usuario == 2) { ?>
@@ -88,7 +88,7 @@
                             mysqli_close($conexao);
                             ?>
                          
-                
+
             </div>
     </div>
    

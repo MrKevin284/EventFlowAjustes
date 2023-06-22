@@ -77,10 +77,11 @@ body {
 .imagem_evento{
    position: relative;
    margin-top: 60px;
-   border-bottom: 2px solid #50C7F6;
+   border-bottom: 2px solid #50C7F6;  
 }
 
 .container_eventflow {
+    position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -494,11 +495,7 @@ body {
     transition: 0.3s;
 }
 
-
-
-
-      
-
+     
 @media (max-width: 768px) {
     .form_login_senha {
         width: 80%;
@@ -641,6 +638,124 @@ body {
 
 
 
+/* cadastro_pessoal.php */
+
+.container_pessoal {
+    background-color: #4e4e4e;
+    border-radius: 10px;
+    border: 3px solid #50C7F6;
+    width: 500px;
+    max-width: 50%;
+    max-height: 100%;
+}
+
+.nome_pessoal {
+    padding: 40px 50px;
+}
+
+.nome_pessoal h2 {
+    font-weight: 800;
+    color: white;
+    font-size: 30px;
+}
+
+.form_pessoal {
+    padding: 0 20px 5px;
+}
+
+.form_control_pessoal {
+    margin-bottom: 1px;
+    padding-bottom: 5px;
+    position: relative;
+}
+
+.form_control_pessoal input {
+    border: 2px solid #50C7F6;
+    border-radius: 5px;
+    outline: 0;
+    display: block;
+    font-size: 15px;
+    width: 100%;
+    padding: 15px;
+    border-radius: 10px;
+    margin-top: -10px;
+}
+
+.form_control_pessoal i {
+    position: absolute;
+    top: 45px;
+    right: 10px;
+    visibility: hidden;
+}
+
+.form_pessoal button {
+    background-color: #50C7F6;
+    border-radius: 5px;
+    color: #fff;
+    padding: 15px;
+    font-size: larger;
+    font-weight: 800;
+    width: 50%;
+    margin-top: 10px;
+    cursor: pointer;
+    border-radius: 10px;
+    margin-bottom: 10px;
+}
+
+.form_pessoal button:hover {
+    background-color: grey;
+    transition: 0.3s;
+}
+
+.voltar_pessoal a {
+    background-color: #50C7F6;
+    position: absolute;
+    border-radius: 100%;
+    margin-top: 10px;
+    margin-left: 10px;
+}
+
+@media (max-width: 768px) {
+    .form_cadastro_empresarial {
+      width: 90%;
+      height: auto;
+    }
+  
+    .logo_cadastro_empresarial {
+      top: 2%;
+      height: 1.5rem;
+    }
+  
+    #usuario_empresarial {
+      width: 100%;
+      font-size: 1.5rem;
+      margin-bottom: 3rem;
+      top: 10%;
+    }
+  
+    .login_cadastro_empresarial input {
+      width: 100%;
+    }
+  
+    .concluir_usuario_empresarial button {
+      width: 100%;
+      height: 3rem;
+      font-size: 1rem;
+      margin-bottom: 2rem;
+      top: 0;
+    }
+  
+    .voltar_usuario_empresarial {
+      top: 2%;
+      left: 80%;
+      width: 10%;
+      height: 6%;
+    }
+  }
+
+
+
+
 /* cadastro_empresarial.php */
 
 .container_empresarial {
@@ -737,125 +852,6 @@ body {
     }
   
     .voltar_usuario_pessoal {
-      top: 2%;
-      left: 80%;
-      width: 10%;
-      height: 6%;
-    }
-  }
-
-
-
-
-/* cadastro_pessoal.php */
-
-.container_pessoal {
-    background-color: #4e4e4e;
-    border-radius: 10px;
-    border: 3px solid #50C7F6;
-    width: 500px;
-    max-width: 50%;
-    max-height: 100%;
-}
-
-.nome_pessoal {
-    padding: 40px 50px;
-}
-
-.nome_pessoal h2 {
-    font-weight: 800;
-    color: white;
-    font-size: 30px;
-}
-
-.form_pessoal {
-    padding: 0 20px 5px;
-}
-
-.form_control_pessoal {
-    margin-bottom: 1px;
-    padding-bottom: 5px;
-    position: relative;
-}
-
-.form_control_pessoal input {
-    border: 2px solid #50C7F6;
-    border-radius: 5px;
-    outline: 0;
-    display: block;
-    font-size: 15px;
-    width: 100%;
-    padding: 15px;
-    border-radius: 10px;
-    margin-top: -10px;
-}
-
-.form_control_pessoal i {
-    position: absolute;
-    top: 45px;
-    right: 10px;
-    visibility: hidden;
-}
-
-.form_pessoal button {
-    background-color: #50C7F6;
-    border-radius: 5px;
-    color: #fff;
-    padding: 15px;
-    font-size: larger;
-    font-weight: 800;
-    width: 50%;
-    margin-top: 10px;
-    cursor: pointer;
-    border-radius: 10px;
-    margin-bottom: 10px;
-}
-
-.form_pessoal button:hover {
-    background-color: grey;
-    transition: 0.3s;
-}
-
-.voltar_pessoal a {
-    background-color: #50C7F6;
-    position: absolute;
-    border-radius: 100%;
-    margin-top: 10px;
-    margin-left: 10px;
-}
-
-
-@media (max-width: 768px) {
-    .form_cadastro_empresarial {
-      width: 90%;
-      height: auto;
-    }
-  
-    .logo_cadastro_empresarial {
-      top: 2%;
-      height: 1.5rem;
-    }
-  
-    #usuario_empresarial {
-      width: 100%;
-      font-size: 1.5rem;
-      margin-bottom: 3rem;
-      top: 10%;
-    }
-  
-    .login_cadastro_empresarial input {
-      width: 100%;
-    }
-  
-    .concluir_usuario_empresarial button {
-      width: 100%;
-      height: 3rem;
-      font-size: 1rem;
-      margin-bottom: 2rem;
-      top: 0;
-    }
-  
-    .voltar_usuario_empresarial {
       top: 2%;
       left: 80%;
       width: 10%;

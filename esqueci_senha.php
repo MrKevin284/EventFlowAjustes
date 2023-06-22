@@ -43,11 +43,7 @@ session_start();
 
             <div class="form_control_senha password-toggle">
                 <div class="senha_olho"> 
-                    <input type="password" id="password" placeholder="Senha" name="nova_senha" required>
-                    
-                    <span class="toggle-icon" onclick="togglePasswordVisibility()">
-                        <img src="assets/imagens/mostrar_senha.png" alt="Mostrar Senha" id="password-toggle-icon">
-                    </span>
+                    <input type="text" id="password" placeholder="Senha" name="nova_senha" required>
                     
                     <i class="img-success" ><img src="assets/imagens/success-icon.svg" alt=""></i>
                     <i class="img-error" ><img src="assets/imagens/error-icon.svg" alt=""></i>

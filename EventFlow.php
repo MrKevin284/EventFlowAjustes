@@ -9,7 +9,9 @@
 </head>
 <body>
     <div class="cabecalho_eventflow">
+
         <h2 id="nome_eventflow">Bem-vindo(a) ao EventFlow!</h2>
+        
         <nav class="botoes_eventflow">
             <a href="login.php"><label>Login</label></a>
             <a href="tipo_de_usuario.php"><label>Cadastro</label></a>
@@ -17,21 +19,18 @@
         </nav>
 
         <div class="logo_eventflow">
-            <img src="assets/imagens/logo_fundo_removido.png" alt="Logo EventFlow">
+            <img src="assets/imagens/logo_fundo_removido.png" alt="Logo EventFlow" width="200">
         </div>
 
         <center>
         <div class="imagem_evento">
             <img width="820" height="400" src="assets/imagens/evento_1.jpeg" alt="Imagem do Evento">
-            <!-- width="1363" height="450" -->
         </div>
         <h1 id="todos_os_eventos">Todos os Eventos:</h1>
         </center>
         
         <div class="container_eventflow">
-            
-            
-
+        
             <?php
             // Incluir o arquivo de conexão com o banco de dados
             require_once "conexao.php";
@@ -65,8 +64,6 @@
             mysqli_close($conexao);
             ?>   
             
-            
-
         </div>
     </div>
 </body>

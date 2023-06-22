@@ -57,13 +57,6 @@
                             <br>
                             GitHub: <a href="https://github.com/vittorioaugusto" target="_blank">vittorioaugusto</a>
                         </li>
-                        <li>
-                            Maria Eduarda: <a href="mailto:eduardaleal753@gmail.com">eduardaleal753@gmail.com</a>
-                            <br>
-                            LinkedIn: <a href="https://www.linkedin.com/in/maria-eduarda-de-medeiros-leal/" target="_blank">Maria Eduarda</a>
-                            <br>
-                            GitHub: <a href="https://github.com/MariaEduardaLeal" target="_blank">Maria Eduarda</a>
-                        </li>
                     </ul>
                 </div> 
             </div>

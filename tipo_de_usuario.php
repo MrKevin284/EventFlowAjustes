@@ -16,7 +16,7 @@
                 <img src="assets/imagens/logo_fundo_removido.png" alt="Logo EventFlow">
             </div>
             <div class="nome_usuario">
-                <h2>Selecione o Tipo de Usuário</h2>
+                <h2>Selecione o Tipo de Usuário</h2><hr>
             </div>
         
             <div class="control_usuario">

@@ -13,13 +13,13 @@
     <div class="container_pessoal">
         <div class="voltar_pessoal">
             <?php
-            echo '<a href="login.php"><img src="assets/imagens/seta-voltar.png"></a>';
+            echo '<a href="tipo_de_usuario.php"><img src="assets/imagens/seta-voltar.png"></a>';
             ?>
         </div>
         <center>
 
             <div class="nome_pessoal">
-                <h2>Usuário pessoal</h2>
+                <h2>Usuário Pessoal</h2><hr>
             </div>
         
         <form class="form_pessoal" id="form" action="processa_cadastro.php" method="POST">

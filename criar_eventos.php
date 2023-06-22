@@ -11,7 +11,7 @@
     <div class="cabecalho_criar_eventos">
 
         <div class="logo_criar_eventos">
-            <img src="assets/imagens/logo_fundo_removido.png" alt="Logo EventFlow">
+        <a href="eventos.php"><img src="assets/imagens/logo_fundo_removido.png" alt="Logo EventFlow" title="Início" width="200"></a>
         </div>
 
         <nav class="botoes_criar_evento">
@@ -27,7 +27,9 @@
             <center>
                 <form method="POST" action="<?php echo $_SERVER['PHP_SELF']; ?>">
                     <div class="informacoes_criar_eventos">
-                    <h1 id="nome_criar_evento">Criar Evento</h1>
+                    <center>
+                    <h1 id="nome_criar_evento">Criar Evento</h1><hr>
+                    </center>
                         <label for="nome_evento">Nome do Evento:</label>
                         <input type="text" id="nome_evento" name="nome_evento" required><br>
 

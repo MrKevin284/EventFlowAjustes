@@ -45,7 +45,7 @@ $produtos = obterListaProdutos($conexao);
     <div class="cabecalho_info_produto">
 
             <div class="logo_info_produto">
-                <img src="assets/imagens/logo_fundo_removido.png" alt="Logo EventFlow">
+            <a href="EventFlow.php"><img src="assets/imagens/logo_fundo_removido.png" alt="Logo EventFlow" title="Página Inicial" width="200"></a>
             </div>
 
             <?php
@@ -107,7 +107,7 @@ $produtos = obterListaProdutos($conexao);
                         <input type="text" id="nome" name="nome" value="<?php echo $produto["nome"]; ?>" required><br>
 
                         <label for="descricao">Descrição:</label><br>
-                        <textarea id="descricao" name="descricao" required><?php echo $produto["descricao"]; ?></textarea><br>
+                        <textarea id="descricao" name="descricao" required style="resize: none"><?php echo $produto["descricao"]; ?></textarea><br>
 
                         <label for="quantidade">Quantidade:</label><br>
                         <input type="number" id="quantidade" name="quantidade" value="<?php echo $produto["quantidade"]; ?>" required><br>
@@ -115,9 +115,9 @@ $produtos = obterListaProdutos($conexao);
                         <label for="valor">Valor:</label><br>
                         <input type="text" id="valor" name="valor" value="<?php echo $produto["valor"]; ?>" required><br><br>
 
-                        <a type="submit" value="Salvar">Salvar</a>
-                        <a href="?delete=<?php echo $produto["iditem_loja"]; ?>" onclick="return confirm('Tem certeza que deseja excluir o produto?')">Excluir</a>
-
+                        <button><a type="submit" value="Salvar">Salvar</a></button>
+                        <button><a href="?delete=<?php echo $produto["iditem_loja"]; ?>" onclick="return confirm('Tem certeza que deseja excluir o produto?')">Excluir</a></button>
+                        <button><a href="cadastro_produto.php">Voltar</a></button>
                     </form>
 
                     <hr>
