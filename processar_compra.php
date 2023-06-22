@@ -16,6 +16,24 @@
         <div class="container_compra_concluida"> 
             <div class="informacoes_compra_concluida">
 
+            <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Compra Concluída</title>
+    <link rel="stylesheet" href="assets/css/style2.css">
+</head>
+<body>
+    <div class="cabecalho_compra_concluida">
+
+        <div class="logo_compra_concluida">
+        <a href="eventos.php"><img src="assets/imagens/logo_fundo_removido.png" alt="Logo EventFlow" title="Início" width="200"></a>
+        </div>
+
+        <div class="container_compra_concluida"> 
+            <div class="informacoes_compra_concluida">
+
                 <?php
                 session_start();
                 if (!isset($_SESSION['idusuario'])) {
@@ -108,17 +126,29 @@
                         echo "<p>Preço Total: R$ $preco_total</p>";
 
                         // Exibir formulário de avaliação
-                        echo '<div class="avaliacao">';
-                        echo '<h2>Avaliar o Evento</h2>';
-                        echo '<form action="processar_avaliacao.php" method="post">';
-                        echo '<label for="nota">Nota:</label>';
-                        echo '<input type="radio" name="nota" value="5"> 5';
-                        echo '<input type="radio" name="nota" value="4"> 4';
-                        echo '<input type="radio" name="nota" value="3"> 3';
-                        echo '<input type="radio" name="nota" value="2"> 2';
-                        echo '<input type="radio" name="nota" value="1"> 1';
-                        echo '</form>';
-                        echo '</div>',"<br>";
+                        echo'<h2 id="nome_avaliar_evento">Avaliar o Evento</h2>';
+                        echo'<div class="rating">
+                        <input value="star-1" name="star-radio" id="star-1" type="radio">
+                        <label for="star-1">
+                          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12,17.27L18.18,21L16.54,13.97L22,9.24L14.81,8.62L12,2L9.19,8.62L2,9.24L7.45,13.97L5.82,21L12,17.27Z" pathLength="360"></path></svg>
+                        </label>
+                        <input value="star-1" name="star-radio" id="star-2" type="radio">
+                        <label for="star-2">
+                          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12,17.27L18.18,21L16.54,13.97L22,9.24L14.81,8.62L12,2L9.19,8.62L2,9.24L7.45,13.97L5.82,21L12,17.27Z" pathLength="360"></path></svg>
+                        </label>
+                        <input value="star-1" name="star-radio" id="star-3" type="radio">
+                        <label for="star-3">
+                          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12,17.27L18.18,21L16.54,13.97L22,9.24L14.81,8.62L12,2L9.19,8.62L2,9.24L7.45,13.97L5.82,21L12,17.27Z" pathLength="360"></path></svg>
+                        </label>
+                        <input value="star-1" name="star-radio" id="star-4" type="radio">
+                        <label for="star-4">
+                          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12,17.27L18.18,21L16.54,13.97L22,9.24L14.81,8.62L12,2L9.19,8.62L2,9.24L7.45,13.97L5.82,21L12,17.27Z" pathLength="360"></path></svg>
+                        </label>
+                        <input value="star-1" name="star-radio" id="star-5" type="radio">
+                        <label for="star-5">
+                          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12,17.27L18.18,21L16.54,13.97L22,9.24L14.81,8.62L12,2L9.19,8.62L2,9.24L7.45,13.97L5.82,21L12,17.27Z" pathLength="360"></path></svg>
+                        </label>
+                      </div>';
 
                         echo "<a href='eventos.php'>Voltar para os Eventos</a>";
                     } else {
@@ -132,6 +162,12 @@
                     exit();
                 }
                 ?>
+
+            </div>
+        </div>
+    </div>  
+</body> 
+</html>
 
             </div>
         </div>
