@@ -7,32 +7,33 @@
     <title>Eventos</title>
     <link rel="stylesheet" href="assets/css/style2.css">
     <style>
-        .star-rating {
-            display: flex;
-            align-items: center;
-            margin-top: 10px;
-        }
+    .star-rating {
+        display: flex;
+        align-items: center;
+        margin-top: 10px;
+        flex-direction: row-reverse; /* Inverte a direção das estrelas */
+    }
 
-        .star-rating input[type="radio"] {
-            display: none;
-        }
+    .star-rating input[type="radio"] {
+        display: none;
+    }
 
-        .star-rating label {
-            color: #aaa;
-            font-size: 20px;
-            padding: 2px;
-            cursor: pointer;
-        }
+    .star-rating label {
+        color: #aaa;
+        font-size: 20px;
+        padding: 2px;
+        cursor: pointer;
+    }
 
-        .star-rating label:before {
-            content: "\2606"; /* Estrela vazia */
-        }
+    .star-rating label:before {
+        content: "\2606"; /* Estrela vazia */
+    }
 
-        .star-rating input[type="radio"]:checked ~ label:before {
-            content: "\2605"; /* Estrela preenchida */
-            color: #f8ce0b;
-        }
-    </style>
+    .star-rating input[type="radio"]:checked ~ label:before {
+        content: "\2605"; /* Estrela preenchida */
+        color: #f8ce0b;
+    }
+</style>
 </head>
 <body>
     <div class="cabecalho_eventos">
