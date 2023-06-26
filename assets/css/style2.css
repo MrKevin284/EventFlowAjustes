@@ -78,7 +78,7 @@ body {
     background-color: #616363;
     width: 50%; /* Adjust the width as needed */
     padding: 10px 20px;
-    font-size: medium;
+    font-size: small;
     box-shadow: 0px 2px 20px 10px rgba(80, 199, 246, 0.75);
     -webkit-box-shadow: 0px 2px 20px 10px rgba(80, 199, 246, 0.75);
     -moz-box-shadow: 0px 2px 20px 10px rgba(80, 199, 246, 0.75);
@@ -229,7 +229,7 @@ body {
     color: white;
     font-size: x-large;
     background-color: #616363;
-    padding: 10px;
+    padding: 10px 20px;
     border-radius: 10px;
     box-shadow: 0px 2px 20px 10px rgba(80,199,246,0.75);
     -webkit-box-shadow: 0px 2px 20px 10px rgba(80,199,246,0.75);
@@ -351,6 +351,178 @@ body {
 #nome_eventos_criados{
     color: white;
     font-size: 30px;
+}
+
+.nome_usuario_eventos button{
+    display: inline-block;
+    background-color: #50C7F6;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 20px;
+    text-decoration: none;
+    font-family: sans-serif;
+}
+    
+.nome_usuario_eventos button:hover {
+    color: blue;
+    transition: color 0.5s;
+}
+
+
+
+
+/* relatorio.php */
+
+.cabecalho_relatorio{
+    position: relative;
+    width: 100%;
+    height: 10%;
+    border-radius: none;
+    display: flex;
+    flex-direction: column;
+    top: -45%;
+    justify-content: space-between;
+}
+
+.logo_relatorio{
+    position: absolute;
+    height: 100%;
+    width: 5px;
+    display: flex;
+}
+
+.container_relatorio {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    height: 100vh;
+}
+
+.caixa_relatorio{
+    color: #fff;
+    border-radius: 10px;
+    margin: 90px;
+    background-color: #616363;
+    width: 40%;
+    padding: 10px 20px;
+    font-size: medium;
+    box-shadow: 0px 2px 20px 10px rgba(80, 199, 246, 0.75);
+    -webkit-box-shadow: 0px 2px 20px 10px rgba(80, 199, 246, 0.75);
+    -moz-box-shadow: 0px 2px 20px 10px rgba(80, 199, 246, 0.75);
+}
+
+.caixa_historico_ingressos{
+    color: #fff;
+}
+
+.relatorio_info a{
+    display: inline-block;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 4px;
+    font-size: large;
+    text-decoration: none;
+}
+    
+.relatorio_info a:hover {
+    color: #50C7F6;
+    transition: color 0.5s;
+}
+
+.relatorio_voltar button{
+    display: inline-block;
+    background-color: #50C7F6;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: large;
+    text-decoration: none;
+    margin-top: 10px;
+}
+    
+.relatorio_voltar button:hover {
+    color: blue;
+    transition: color 0.5s;
+}
+
+
+
+
+/* relatorio_evento.php */
+
+.cabecalho_relatorio_evento{
+    position: relative;
+    width: 100%;
+    height: 10%;
+    border-radius: none;
+    display: flex;
+    flex-direction: column;
+    top: -45%;
+    justify-content: space-between;
+}
+
+.logo_relatorio_evento{
+    position: absolute;
+    height: 100%;
+    width: 5px;
+    display: flex;
+}
+
+.container_relatorio_evento {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    height: 100vh;
+}
+
+.caixa_relatorio_evento{
+    color: #fff;
+    border-radius: 10px;
+    margin: 90px;
+    background-color: #616363;
+    width: 50%;
+    padding: 10px 20px;
+    font-size: larger;
+    box-shadow: 0px 2px 20px 10px rgba(80, 199, 246, 0.75);
+    -webkit-box-shadow: 0px 2px 20px 10px rgba(80, 199, 246, 0.75);
+    -moz-box-shadow: 0px 2px 20px 10px rgba(80, 199, 246, 0.75);
+}
+
+.caixa_historico_ingressos{
+    color: #fff;
+}
+
+.relatorio_evento_voltar a{
+    display: inline-block;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 4px;
+    font-size: large;
+    text-decoration: none;
+}
+    
+.relatorio_evento_voltar a:hover {
+    color: #50C7F6;
+    transition: color 0.5s;
+}
+
+.relatorio_evento_voltar button{
+    display: inline-block;
+    background-color: #50C7F6;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: large;
+    text-decoration: none;
+    margin-top: 10px;
+}
+    
+.relatorio_evento_voltar button:hover {
+    color: blue;
+    transition: color 0.5s;
 }
 
 

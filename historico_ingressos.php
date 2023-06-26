@@ -41,7 +41,6 @@
                         WHERE venda.idusuario = $idUsuario";
 
 
-
                 // Executa a query
                 $resultado = mysqli_query($conexao, $query);
                 
