@@ -53,10 +53,11 @@
                         echo "Código do ingresso: " . $row['cod_ingressos'] . "<br>","<hr>";
                         echo "<br>";
                     }
-                    echo'<center>';
+                    
                 } else {
+                    echo'<center>';
                     echo "Nenhuma compra de ingresso encontrada.";
-                    echo'<a href="eventos.php">Voltar para Eventos</a>';
+                    
                 }
                 echo'<a href="eventos.php">Voltar para Eventos</a>';
                 echo'</center>';

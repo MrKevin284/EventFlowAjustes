@@ -16,7 +16,7 @@ session_start();
     <div class="container_login">
         <center>
             <div class="logo_login">
-                <a href="EventFlow.php"><img src="assets/imagens/logo_fundo_removido.png" alt="Logo EventFlow" title="Página Inicial"></a>
+            <a href="EventFlow.php"><img src="assets/imagens/logo_fundo_removido.png" alt="Logo EventFlow" title="Página Inicial" width="300"></a>
             </div>
 
             <div class="nome_login">

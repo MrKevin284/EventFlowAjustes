@@ -48,10 +48,11 @@
                         echo "Preço unitário: " . $row['preco_unitario'] . "<br>","<hr>"; 
                         echo "<br>";
                     }
-                    echo'<center>';
+                    
                 } else {
+                    echo'<center>';
                     echo "Nenhum item comprado encontrado.";
-                    echo'<a href="eventos.php">Voltar para Eventos</a>';
+                    
                 }
                 echo'<a href="eventos.php">Voltar para Eventos</a>';
                 echo'</center>';

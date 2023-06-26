@@ -16,24 +16,6 @@
         <div class="container_compra_concluida"> 
             <div class="informacoes_compra_concluida">
 
-            <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Compra Concluída</title>
-    <link rel="stylesheet" href="assets/css/style2.css">
-</head>
-<body>
-    <div class="cabecalho_compra_concluida">
-
-        <div class="logo_compra_concluida">
-        <a href="eventos.php"><img src="assets/imagens/logo_fundo_removido.png" alt="Logo EventFlow" title="Início" width="200"></a>
-        </div>
-
-        <div class="container_compra_concluida"> 
-            <div class="informacoes_compra_concluida">
-
                 <?php
                 session_start();
                 if (!isset($_SESSION['idusuario'])) {
@@ -167,10 +149,4 @@
         </div>
     </div>  
 </body> 
-</html>
-
-            </div>
-        </div>
-    </div>  
-</body>
 </html>

@@ -104,6 +104,37 @@
                             echo "<input type='hidden' name='id_ingresso[]' value='$id_ingresso'>";
                         }
 
+                        // Verificar a quantidade disponível antes de adicionar o item ao carrinho
+                        foreach ($dados_venda as $dados) {
+                            if (isset($dados['id_ingresso'])) {
+                                $id_ingresso = $dados['id_ingresso'];
+                                if (!empty($id_ingresso)) {
+                                    // Consultar a quantidade disponível do ingresso no banco de dados
+                                    $query_quantidade_disponivel = "SELECT quantidade FROM ingresso WHERE id_ingresso = $id_ingresso";
+                                    $resultado_quantidade = mysqli_query($conexao, $query_quantidade_disponivel);
+                                    $row_quantidade = mysqli_fetch_assoc($resultado_quantidade);
+                                    $quantidade_disponivel = $row_quantidade['quantidade'];
+
+                                    // Verificar se a quantidade disponível é maior que zero
+                                    if ($quantidade_disponivel > 0) {
+                                        // A quantidade é maior que zero, adicionar o ingresso ao carrinho
+
+                                        // Atualizar a quantidade no banco de dados
+                                        $query_atualizar_quantidade = "UPDATE ingresso SET quantidade = quantidade - 1 WHERE id_ingresso = $id_ingresso";
+                                        if (mysqli_query($conexao, $query_atualizar_quantidade)) {
+                                            // A atualização foi realizada com sucesso
+                                            echo "<input type='hidden' name='id_ingresso[]' value='$id_ingresso'>";
+                                        } else {
+                                            // Ocorreu um erro ao atualizar a quantidade de ingressos
+                                            echo "Erro ao atualizar a quantidade de ingressos: " . mysqli_error($conexao);
+                                        }
+                                    } else {
+                                        // A quantidade é igual a zero, exibir mensagem de ingresso esgotado
+                                        echo "<p>O ingresso está esgotado. Não foi possível adicioná-lo ao carrinho.</p>";
+                                    }
+                                }
+                            }
+                        }
                        
                         echo "</form>";
                         echo'</center>';

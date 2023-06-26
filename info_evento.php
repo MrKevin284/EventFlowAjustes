@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,12 +8,13 @@
     <title>Informações do Evento</title>
     <link rel="stylesheet" href="assets/css/style2.css">
 </head>
+
 <body>
     <div class="container_info_evento">
         <div class="cabecalho_info_evento">
 
             <div class="logo_info_evento">
-            <a href="eventos.php"><img src="assets/imagens/logo_fundo_removido.png" alt="Logo EventFlow" title="Início" width="200"></a>
+                <a href="eventos.php"><img src="assets/imagens/logo_fundo_removido.png" alt="Logo EventFlow" title="Início" width="200"></a>
             </div>
 
             <?php
@@ -20,7 +22,8 @@
             require_once "conexao.php";
 
             // Função para verificar se o usuário é o criador do evento
-            function verificarCriadorEvento($id_evento, $idusuario, $conexao) {
+            function verificarCriadorEvento($id_evento, $idusuario, $conexao)
+            {
                 // Consultar o banco de dados para verificar se o usuário é o criador do evento
                 $query = "SELECT idevento FROM eventos WHERE idevento = $id_evento AND idusuario = $idusuario";
                 $resultado = mysqli_query($conexao, $query);
@@ -45,16 +48,27 @@
             ?>
 
             <nav class="botoes_info_evento">
-                <?php if ($tipo_usuario == 2): // Cadastro Empresarial ?>
+                <?php if ($tipo_usuario == 2) : // Cadastro Empresarial 
+                ?>
                     <a href="criar_eventos.php"><label>Criar Eventos</label></a>
                     <a href="eventos_criados.php"><label>Eventos Criados</label></a>
-                <?php else: // Cadastro Pessoal ?>
+                <?php else : // Cadastro Pessoal 
+                ?>
                     <a href="eventos.php"><label>Eventos</label></a>
                     <a href="eventos_criados.php"><label>Meus Eventos</label></a>
                 <?php endif; ?>
-                <a href="carrinho.php">Carrinho</a>
+                <a href="carrinho.php">
+                    <script src="https://cdn.lordicon.com/bhenfmcm.js"></script>
+                    <lord-icon src="https://cdn.lordicon.com/slkvcfos.json" trigger="hover" colors="primary:white,secondary:white" style="width:65px;height:65px;top:5px;">
+                    </lord-icon>
+                </a>
                 <a href="perfil.php"><label>Perfil</label></a>
-                <a href="EventFlow.php"><label>Logout</label></a>
+                <a href="EventFlow.php"><button class="Btn">
+                        <div class="sign"><svg viewBox="0 0 512 512">
+                                <path d="M377.9 105.9L500.7 228.7c7.2 7.2 11.3 17.1 11.3 27.3s-4.1 20.1-11.3 27.3L377.9 406.1c-6.4 6.4-15 9.9-24 9.9c-18.7 0-33.9-15.2-33.9-33.9l0-62.1-128 0c-17.7 0-32-14.3-32-32l0-64c0-17.7 14.3-32 32-32l128 0 0-62.1c0-18.7 15.2-33.9 33.9-33.9c9 0 17.6 3.6 24 9.9zM160 96L96 96c-17.7 0-32 14.3-32 32l0 256c0 17.7 14.3 32 32 32l64 0c17.7 0 32 14.3 32 32s-14.3 32-32 32l-64 0c-53 0-96-43-96-96L0 128C0 75 43 32 96 32l64 0c17.7 0 32 14.3 32 32s-14.3 32-32 32z"></path>
+                            </svg></div>
+                        <div class="text">Logout</div>
+                    </button></a>
             </nav>
         </div>
 
@@ -114,7 +128,7 @@
                                     echo '<input type="hidden" name="id_ingresso" value="' . $dados_ingresso['id_ingresso'] . '">';
                                     echo '<input type="hidden" name="id_evento" value="' . $id_evento . '">';
                                     echo '<div class="botoes_caixa_info_evento"><button type="submit" name="acao" value="adicionar_carrinho">Adicionar ao Carrinho</button></div>';
-                                    echo '</form>';                                    
+                                    echo '</form>';
                                 }
 
                                 echo '</p>';
@@ -132,7 +146,6 @@
                         }
                         echo '<div class="botoes_caixa_info_evento"><a href="loja.php?id=' . $id_evento . '">Loja</a></div>';
                         echo '<div class="botoes_caixa_info_evento"><a href="eventos.php">Voltar para a lista de eventos</a></div>';
-                        
                     } else {
                         echo '<p>Evento não encontrado.</p>';
                     }
@@ -140,9 +153,10 @@
                     echo '<p>Evento não especificado.</p>';
                 }
                 echo '</div></center>';
-                ?>        
-            </div>           
+                ?>
+            </div>
         </div>
     </div>
 </body>
+
 </html>

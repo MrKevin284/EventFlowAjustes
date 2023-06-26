@@ -93,10 +93,10 @@ body {
     border-radius: 10px;
     margin: 10px;
     background-color: #616363;
-    width: calc(30% - 100px); /* Adjust the width as needed */
+    width: 50%; /* Adjust the width as needed */
     padding: 10px;
     border-radius: 5px;
-    font-size: large;
+    font-size: medium;
     box-shadow: 0px 2px 20px 10px rgba(80, 199, 246, 0.75);
     -webkit-box-shadow: 0px 2px 20px 10px rgba(80, 199, 246, 0.75);
     -moz-box-shadow: 0px 2px 20px 10px rgba(80, 199, 246, 0.75);
@@ -119,6 +119,101 @@ body {
 
 #nome_nenhum_evento_encontrado{
     color: white;
+}
+
+
+
+
+/* sobre_nos.php */
+
+.cabecalho_sobre_nos{
+    position: relative;
+    width: 100%;
+    height: 10%;
+    background-color: #4e4e4e;
+    border-radius: none;
+    display: flex;
+    flex-direction: column;
+    border: 3px solid #50C7F6;
+    top: -45%;
+    justify-content: space-between;
+}
+
+.logo_sobre_nos{
+    position: absolute;
+    height: 100%;
+    width: 5px;
+    display: flex;
+}
+
+.botoes_sobre_nos{
+    position: absolute;
+    left: 60%;
+    flex-direction: row;
+    justify-content: center;
+    display: flex;
+    align-items: center;
+    height: 100%;
+    font-size: 20px;  
+}
+
+.botoes_sobre_nos a{
+    color: #fff;
+    font-weight: bold;
+    text-decoration: none;
+    margin-right: 100px;
+}
+
+.botoes_sobre_nos a:hover {
+    color: #50C7F6;
+    transition: color 0.5s;
+}
+
+#nome_eventflow{
+    color: white;
+    font-size: x-large;
+    position: absolute;
+}
+
+.container_sobre_nos {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 90vh;
+}
+
+.dados_sobre_nos{
+    padding: 10px;
+    position: relative;
+}
+
+.dados_sobre_nos li{
+    padding: 5px;
+}
+
+.conteudo_sobre_nos{
+    color: white;
+    border-radius: 10px;
+    display: inline-block;
+    padding: 15px;
+    border-radius: 5px;
+    font-size: medium;
+    position: relative;
+    margin-top: 100px;
+}
+
+.conteudo_sobre_nos a{  
+    color: #50C7F6;
+    text-decoration: none;  
+}
+
+.conteudo_sobre_nos a:hover {
+    color: blue;
+    transition: color 0.5s;
+}
+
+#nome_contato{
+    font-size: 26px;
 }
 
 
@@ -278,108 +373,13 @@ body {
 
 
 
-/* sobre_nos.php */
-
-.cabecalho_sobre_nos{
-    position: relative;
-    width: 100%;
-    height: 10%;
-    background-color: #4e4e4e;
-    border-radius: none;
-    display: flex;
-    flex-direction: column;
-    border: 3px solid #50C7F6;
-    top: -45%;
-    justify-content: space-between;
-}
-
-.logo_sobre_nos{
-    position: absolute;
-    height: 100%;
-    width: 5px;
-    display: flex;
-}
-
-.botoes_sobre_nos{
-    position: absolute;
-    left: 60%;
-    flex-direction: row;
-    justify-content: center;
-    display: flex;
-    align-items: center;
-    height: 100%;
-    font-size: 20px;  
-}
-
-.botoes_sobre_nos a{
-    color: #fff;
-    font-weight: bold;
-    text-decoration: none;
-    margin-right: 100px;
-}
-
-.botoes_sobre_nos a:hover {
-    color: #50C7F6;
-    transition: color 0.5s;
-}
-
-#nome_eventflow{
-    color: white;
-    font-size: x-large;
-    position: absolute;
-}
-
-.container_sobre_nos {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 90vh;
-}
-
-.dados_sobre_nos{
-    padding: 10px;
-    position: relative;
-}
-
-.dados_sobre_nos li{
-    padding: 5px;
-}
-
-.conteudo_sobre_nos{
-    color: white;
-    border-radius: 10px;
-    display: inline-block;
-    padding: 15px;
-    border-radius: 5px;
-    font-size: medium;
-    position: relative;
-    margin-top: 100px;
-}
-
-.conteudo_sobre_nos a{  
-    color: #50C7F6;
-    text-decoration: none;  
-}
-
-.conteudo_sobre_nos a:hover {
-    color: blue;
-    transition: color 0.5s;
-}
-
-#nome_contato{
-    font-size: 26px;
-}
-
-
-
-
 /* esqueci_senha.php */
 
 .container_senha {
     background-color: #4e4e4e;
     border-radius: 10px;
     border: 3px solid #50C7F6;
-    width: 500px;
+    width: 450px;
     max-width: 100%;
 }
   
@@ -457,7 +457,7 @@ body {
     padding: 15px;
     font-size: larger;
     font-weight: 800;
-    width: 100%;
+    width: 55%;
     margin-top: 10px;
     cursor: pointer;
     border-radius: 10px;

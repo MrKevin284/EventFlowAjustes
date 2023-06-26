@@ -13,7 +13,7 @@
     <div class="container_usuario">
         <center>
             <div class="logo_usuario">
-                <img src="assets/imagens/logo_fundo_removido.png" alt="Logo EventFlow">
+            <a href="EventFlow.php"><img src="assets/imagens/logo_fundo_removido.png" alt="Logo EventFlow" title="Página Inicial" width="300"></a>
             </div>
             <div class="nome_usuario">
                 <h2>Selecione o Tipo de Usuário</h2><hr>
